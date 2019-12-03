@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">memerr</string>
+
+    <string name="title_liked">Liked</string>
+    <string name="title_disliked">Disliked</string>
+    <string name="title_rate">Rate</string>
+</resources>

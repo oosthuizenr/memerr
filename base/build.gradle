@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+
+    api "androidx.appcompat:appcompat:$versions.appCompat"
+    api "androidx.core:core-ktx:$versions.androidxCore"
+
+    api "com.google.android.material:material:$versions.material"
+    api "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+
+    api "androidx.navigation:navigation-fragment:$versions.navigation"
+    api "androidx.navigation:navigation-ui:$versions.navigation"
+    api "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    api "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+
+    api "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+
+    api "androidx.room:room-rxjava2:$versions.room"
+    api "androidx.room:room-runtime:$versions.room"
+    api "androidx.room:room-ktx:$versions.room"
+
+    api "com.google.dagger:dagger:$versions.dagger"
+    api "com.google.dagger:dagger-android:$versions.daggerAndroid"
+    api "com.google.dagger:dagger-android-support:$versions.daggerAndroid"
+
+    api "com.google.code.gson:gson:$versions.gson"
+
+    api "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    api "com.squareup.okhttp3:logging-interceptor:$versions.okhttpLogIntcept"
+    api "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    api "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+    api "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+
+    kapt "com.google.dagger:dagger-compiler:$versions.daggerCompiler"
+    kapt "com.google.dagger:dagger-android-processor:$versions.daggerCompiler"
+
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test.ext:junit:1.1.1'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
+}
