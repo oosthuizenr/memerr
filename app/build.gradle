@@ -8,9 +8,10 @@ android {
 
     defaultConfig {
         applicationId "app.memerr"
-        minSdkVersion versions.minSdk
 
+        minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
+
         versionCode versions.appVersionCode
         versionName versions.appVersionName
 
@@ -37,6 +38,7 @@ dependencies {
     implementation project(":base")
     implementation project(":feature_memerr")
 
+    kapt "com.github.bumptech.glide:compiler:$versions.glide"
     kapt "com.google.dagger:dagger-compiler:$versions.daggerCompiler"
     kapt "com.google.dagger:dagger-android-processor:$versions.daggerCompiler"
 }

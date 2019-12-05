@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_rate">
+
+    <keep_state_fragment
+        android:id="@+id/navigation_rate"
+        android:name="app.memerr.feature_memerr.rate.view.RateFragment"
+        android:label="RateFragment" />
+    <keep_state_fragment
+        android:id="@+id/navigation_disliked"
+        android:name="app.memerr.feature_memerr.disliked.view.DislikedFragment"
+        android:label="DislikedFragment" />
+    <keep_state_fragment
+        android:id="@+id/navigation_liked"
+        android:name="app.memerr.feature_memerr.liked.view.LikedFragment"
+        android:label="LikedFragment" />
+</navigation>

@@ -3,23 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_rate">
-
-    <fragment
-        android:id="@+id/navigation_disliked"
-        android:name="app.memerr.ui.home.HomeFragment"
-        android:label="@string/title_disliked"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/navigation_rate"
-        android:name="app.memerr.ui.dashboard.DashboardFragment"
-        android:label="@string/title_rate"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_liked"
-        android:name="app.memerr.ui.notifications.NotificationsFragment"
-        android:label="@string/title_liked"
-        tools:layout="@layout/fragment_notifications" />
+    app:startDestination="@id/nav_graph">
+    <include app:graph="@navigation/feature_memerr_nav_graph" />
 </navigation>
