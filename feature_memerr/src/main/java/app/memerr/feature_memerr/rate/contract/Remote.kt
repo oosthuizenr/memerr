@@ -1,6 +1,5 @@
 package app.memerr.feature_memerr.rate.contract
 
-import app.memerr.feature_memerr.rate.contract.Contract
 import app.memerr.feature_memerr.shared.api.MemerrService
 import app.memerr.feature_memerr.shared.model.Meme
 

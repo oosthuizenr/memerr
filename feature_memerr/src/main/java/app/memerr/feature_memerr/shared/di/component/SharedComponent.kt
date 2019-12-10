@@ -7,6 +7,8 @@ import app.memerr.feature_memerr.rate.contract.MemesDataSource
 import app.memerr.feature_memerr.shared.api.MemerrService
 import app.memerr.feature_memerr.shared.di.modules.ApiModule
 import app.memerr.feature_memerr.rate.di.modules.ContractModule
+import app.memerr.feature_memerr.shared.db.MemeDatabase
+import app.memerr.feature_memerr.shared.di.modules.DatabaseModule
 import dagger.Component
 import javax.inject.Scope
 
@@ -17,7 +19,8 @@ annotation class MemerrSharedScope
 @MemerrSharedScope
 @Component(
     modules = [
-        ApiModule::class
+        ApiModule::class,
+        DatabaseModule::class
     ],
     dependencies = [
         BaseComponent::class
@@ -26,6 +29,7 @@ annotation class MemerrSharedScope
 interface SharedComponent {
     val context: Context
     val memerrService: MemerrService
+    val database: MemeDatabase
 
     companion object {
         private var component: SharedComponent? = null

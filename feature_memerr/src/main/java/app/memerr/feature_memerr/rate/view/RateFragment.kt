@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -32,7 +33,7 @@ class RateFragment : Fragment(), CardStackListener {
     private val viewModel: RateViewModel by viewModels { factory }
     private lateinit var cardStackView: CardStackView
 
-//    private val manager by lazy { CardStackLayoutManager(context, this) }
+    private lateinit var manager: CardStackLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,26 @@ class RateFragment : Fragment(), CardStackListener {
         cardStackView = v.findViewById(R.id.cardStackView)
         initializeCardStackView()
 
+        v.findViewById<View>(R.id.fabLike).setOnClickListener {
+            val setting = SwipeAnimationSetting.Builder()
+                .setDirection(Direction.Right)
+                .setDuration(Duration.Normal.duration)
+                .setInterpolator(AccelerateInterpolator())
+                .build()
+            manager.setSwipeAnimationSetting(setting)
+            cardStackView.swipe()
+        }
+
+        v.findViewById<View>(R.id.fabDislike).setOnClickListener {
+            val setting = SwipeAnimationSetting.Builder()
+                .setDirection(Direction.Left)
+                .setDuration(Duration.Normal.duration)
+                .setInterpolator(AccelerateInterpolator())
+                .build()
+            manager.setSwipeAnimationSetting(setting)
+            cardStackView.swipe()
+        }
+
         return v
     }
 
@@ -63,7 +84,7 @@ class RateFragment : Fragment(), CardStackListener {
     }
 
     private fun initializeCardStackView() {
-        val manager = CardStackLayoutManager(context, this)
+        manager = CardStackLayoutManager(context, this)
 
         manager.setStackFrom(StackFrom.None)
         manager.setVisibleCount(3)
@@ -81,19 +102,21 @@ class RateFragment : Fragment(), CardStackListener {
         cardStackView.adapter = adapter
     }
 
-    override fun onCardDisappeared(view: View?, position: Int) {
+    override fun onCardDisappeared(view: View, position: Int) {
+        viewModel.lastInteractedWithIndex = position
     }
 
-    override fun onCardDragging(direction: Direction?, ratio: Float) {
+    override fun onCardDragging(direction: Direction, ratio: Float) {
     }
 
-    override fun onCardSwiped(direction: Direction?) {
+    override fun onCardSwiped(direction: Direction) {
+        viewModel.cardSwiped(direction)
     }
 
     override fun onCardCanceled() {
     }
 
-    override fun onCardAppeared(view: View?, position: Int) {
+    override fun onCardAppeared(view: View, position: Int) {
         viewModel.currentTop = position
     }
 

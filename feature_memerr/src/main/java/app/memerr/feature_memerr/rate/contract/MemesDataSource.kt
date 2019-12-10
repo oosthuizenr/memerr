@@ -44,14 +44,6 @@ class MemesDataSource(private val scope: CoroutineScope): PageKeyedDataSource<In
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Meme>) {
-//        scope.launch {
-//            try {
-//                val memes = repository.getMemes(params.key)
-//
-//                callback.onResult(memes, params.key + 1)
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//        }
+        //Nothing to do here as we don't go back in the list
     }
 }
